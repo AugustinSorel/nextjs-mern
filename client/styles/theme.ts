@@ -7,15 +7,21 @@ const theme: DefaultTheme = {
   },
 
   fontSizes: {
-    small: "2vmin",
-    medium: "3vmin",
-    large: "4vmin",
+    small: "1vmax",
+    medium: "2vmax",
+    large: "3vmax",
   },
 
   fontWeights: {
     light: 300,
     regular: 400,
     bold: 700,
+  },
+
+  breakpoints: {
+    mobile: "768px",
+    tablet: "1024px",
+    desktop: "1440px",
   },
 
   sizes: {
