@@ -5,6 +5,8 @@ import * as Styles from "./Input.styled";
 type Props = {
   type: HTMLInputTypeAttribute;
   placeholder: string;
+  value: string | number;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Input = ({ ...rest }: Props) => {
