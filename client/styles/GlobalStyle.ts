@@ -9,7 +9,10 @@ const GlobalStyle = createGlobalStyle`
 
     :root{
         --background-color: ${({ theme }) => theme.colors.background};
+        --bright-background-color: ${({ theme }) =>
+          theme.colors.brightBackground};
         --color: ${({ theme }) => theme.colors.color};
+        --bright-color: ${({ theme }) => theme.colors.brightColor};
 
         --font-size-small: ${({ theme }) => theme.fontSizes.small};
         --font-size-medium: ${({ theme }) => theme.fontSizes.medium};
@@ -21,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
 
         --gap: ${({ theme }) => theme.sizes.gap};
         --border-height: ${({ theme }) => theme.sizes.borderHeight};
+        --border-radius: ${({ theme }) => theme.sizes.borderRadius};
     }
 
     body{

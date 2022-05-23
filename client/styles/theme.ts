@@ -3,7 +3,9 @@ import { DefaultTheme } from "styled-components";
 const theme: DefaultTheme = {
   colors: {
     background: "#121212",
+    brightBackground: "#303030",
     color: "#b3b3b3",
+    brightColor: "#ffffff",
   },
 
   fontSizes: {
@@ -27,6 +29,7 @@ const theme: DefaultTheme = {
   sizes: {
     gap: "1rem",
     borderHeight: "3px",
+    borderRadius: "16px",
   },
 };
 

@@ -4,7 +4,9 @@ declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
       background: string;
+      brightBackground: string;
       color: string;
+      brightColor: string;
     };
 
     fontSizes: {
@@ -28,6 +30,7 @@ declare module "styled-components" {
     sizes: {
       gap: string;
       borderHeight: string;
+      borderRadius: string;
     };
   }
 }
