@@ -25,7 +25,7 @@ const PathItem = ({ path: { href, label } }: Props) => {
       onMouseLeave={mouseLeaveHandler}
     >
       <Styles.Text>
-        <Link href={href}>
+        <Link href={href} passHref>
           <Styles.Anchor>{label}</Styles.Anchor>
         </Link>
 

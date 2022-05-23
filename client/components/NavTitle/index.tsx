@@ -5,7 +5,7 @@ import * as Styles from "./NavTitle.styled";
 const NavTitle = () => {
   return (
     <Styles.Title>
-      <Link href={paths[0].href}>
+      <Link href={paths[0].href} passHref>
         <Styles.Anchor>{paths[0].label}</Styles.Anchor>
       </Link>
     </Styles.Title>
