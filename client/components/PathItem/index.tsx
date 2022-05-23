@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import useNavigationMenuStore from "../../store/useNavigationMenuStore";
 import Path from "../../types/Path";
 import * as Styles from "./PathItem.styled";
 
@@ -12,6 +13,7 @@ const PathItem = ({ path: { href, label } }: Props) => {
   const [isPathItemHovered, setIsPathHovered] = useState(false);
   const { pathname } = useRouter();
   const isPathItemSelected = pathname === href;
+  const { closeNavigationMenu } = useNavigationMenuStore();
 
   const mouseEnterHandler = () => {
     setIsPathHovered(true);
@@ -29,7 +31,7 @@ const PathItem = ({ path: { href, label } }: Props) => {
     >
       <Styles.Text isSelected={isPathItemSelected}>
         <Link href={href} passHref>
-          <Styles.Anchor>{label}</Styles.Anchor>
+          <Styles.Anchor onClick={closeNavigationMenu}>{label}</Styles.Anchor>
         </Link>
       </Styles.Text>
 
