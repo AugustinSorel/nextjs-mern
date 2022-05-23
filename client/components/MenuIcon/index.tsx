@@ -1,3 +1,4 @@
+import { scaleDown, scaleUp } from "../../framerMotion/whileVariants";
 import useNavigationMenuStore from "../../store/useNavigationMenuStore";
 import * as Styles from "./MenuIcon.styled";
 
@@ -5,18 +6,23 @@ const MenuIcon = () => {
   const { isNavigationMenuOpen } = useNavigationMenuStore();
 
   return (
-    <Styles.Svg viewBox="0 0 24 24">
+    <Styles.Svg
+      whileHover={{ ...scaleUp }}
+      whileFocus={{ ...scaleUp }}
+      whileTap={{ ...scaleDown }}
+      viewBox="0 0 24 24"
+    >
       <Styles.Path
-        animate={{ d: isNavigationMenuOpen ? "M 4 20 L 20 4" : "M 4 4 L 20 4" }}
+        animate={{ d: isNavigationMenuOpen ? "M 2 22 L 22 2" : "M 2 2 L 22 2" }}
       />
       <Styles.Path
-        d="M 4 12 L 20 12"
+        d="M 2 12 L 22 12"
         animate={{ opacity: isNavigationMenuOpen ? 0 : 1 }}
         transition={{ duration: 0.1 }}
       />
       <Styles.Path
         animate={{
-          d: isNavigationMenuOpen ? "M 4 4 L 20 20" : "M 4 20 L 20 20",
+          d: isNavigationMenuOpen ? "M 2 2 L 22 22" : "M 2 22 L 22 22",
         }}
       />
     </Styles.Svg>

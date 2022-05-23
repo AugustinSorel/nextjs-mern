@@ -1,9 +1,22 @@
-import React from "react";
+import { FormEvent } from "react";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
+import * as Styles from "./AddNewContactPage.styled";
 
-type Props = {};
+function AddNewContactPage() {
+  const submitHandler = (e: FormEvent) => {
+    e.preventDefault();
+    console.log("ello");
+  };
 
-function AddNewContactPage({}: Props) {
-  return <h3>AddNewContactPage</h3>;
+  return (
+    <Styles.Form onSubmit={submitHandler}>
+      <Input type="text" placeholder="name" />
+      <Input type="text" placeholder="email" />
+      <Input type="text" placeholder="age" />
+      <Button text="submit" inverted />
+    </Styles.Form>
+  );
 }
 
 export default AddNewContactPage;

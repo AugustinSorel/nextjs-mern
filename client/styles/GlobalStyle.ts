@@ -35,6 +35,12 @@ const GlobalStyle = createGlobalStyle`
         font-weight: var(--font-weight-regular);
     }
 
+    #__next{
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
 `;
 
 export default GlobalStyle;
