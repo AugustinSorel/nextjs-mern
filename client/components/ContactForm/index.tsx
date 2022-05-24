@@ -1,5 +1,6 @@
 import { useAnimation } from "framer-motion";
 import { FormEvent, useReducer } from "react";
+import { useMutation } from "react-query";
 import errorVariants from "../../framerMotion/errorVariants";
 import {
   ContactFormActionTypes,
@@ -11,21 +12,44 @@ import * as Styles from "./ContactForm.styled";
 import { contactFormReducer, defaultValues } from "./contactFormReducer";
 
 type Props = {
-  submitHandler: (e: FormEvent, state: ContactFormState) => void;
+  mutationFunction: (contact: ContactFormState) => Promise<any>;
 };
 
-const ContactForm = ({ submitHandler }: Props) => {
+const ContactForm = ({ mutationFunction }: Props) => {
   const [state, dispatch] = useReducer(contactFormReducer, defaultValues);
   const nameAnimation = useAnimation();
   const emailAnimation = useAnimation();
   const ageAnimation = useAnimation();
 
-  const onSubmit = (e: FormEvent) => {
-    submitHandler(e, state);
+  const errorHandler = (error: any) => {
+    console.log(error.response.data.message);
+    console.log(error.response.data.field);
 
-    nameAnimation.start("animate");
-    emailAnimation.start("animate");
-    ageAnimation.start("animate");
+    if (error.response.data.field === "name") {
+      nameAnimation.start("animate");
+    }
+
+    if (error.response.data.field === "email") {
+      emailAnimation.start("animate");
+    }
+
+    if (error.response.data.field === "age") {
+      ageAnimation.start("animate");
+    }
+  };
+
+  const successHandler = (data: any) => {
+    console.log(data);
+  };
+
+  const { mutate: contactFormMutate } = useMutation(mutationFunction, {
+    onSuccess: successHandler,
+    onError: errorHandler,
+  });
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    contactFormMutate(state);
   };
 
   const onChangeHandler = (payload: string, type: ContactFormActionTypes) => {
