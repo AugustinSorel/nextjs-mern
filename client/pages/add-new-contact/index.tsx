@@ -10,7 +10,7 @@ function AddNewContactPage() {
         <meta name="description" content="add a new contact" />
         <link rel="icon" href="/favicon.ico" />
         <meta
-          http-equiv="Content-Security-Policy"
+          httpEquiv="Content-Security-Policy"
           content="upgrade-insecure-requests"
         />
       </Head>
