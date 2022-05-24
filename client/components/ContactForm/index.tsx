@@ -1,92 +1,67 @@
+import { useAnimation } from "framer-motion";
 import { FormEvent, useReducer } from "react";
+import errorVariants from "../../framerMotion/errorVariants";
+import {
+  ContactFormActionTypes,
+  ContactFormState,
+} from "../../types/ContactFormTypes";
 import Button from "../Button";
 import Input from "../Input";
 import * as Styles from "./ContactForm.styled";
-
-enum ContactFormActionTypes {
-  CHANGE_NAME = "CHANGE_NAME",
-  CHANGE_EMAIL = "CHANGE_EMAIL",
-  CHANGE_AGE = "CHANGE_AGE",
-}
-
-interface ContactFormAction {
-  type: ContactFormActionTypes;
-  payload: string;
-}
-
-interface ContactFormState {
-  name: string;
-  email: string;
-  age: number;
-}
-
-const contactFormReducer = (
-  state: ContactFormState,
-  action: ContactFormAction
-) => {
-  const { payload, type } = action;
-
-  switch (type) {
-    case ContactFormActionTypes.CHANGE_NAME:
-      return { ...state, name: payload };
-
-    case ContactFormActionTypes.CHANGE_EMAIL:
-      return { ...state, email: payload };
-
-    case ContactFormActionTypes.CHANGE_AGE:
-      return { ...state, age: parseInt(payload) };
-
-    default:
-      return state;
-  }
-};
-
-const defaultValues: ContactFormState = {
-  name: "",
-  email: "",
-  age: 0,
-};
+import { contactFormReducer, defaultValues } from "./contactFormReducer";
 
 type Props = {
-  submitHandler: (e: FormEvent) => void;
+  submitHandler: (e: FormEvent, state: ContactFormState) => void;
 };
 
 const ContactForm = ({ submitHandler }: Props) => {
   const [state, dispatch] = useReducer(contactFormReducer, defaultValues);
+  const nameAnimation = useAnimation();
+  const emailAnimation = useAnimation();
+  const ageAnimation = useAnimation();
+
+  const onSubmit = (e: FormEvent) => {
+    submitHandler(e, state);
+
+    nameAnimation.start("animate");
+    emailAnimation.start("animate");
+    ageAnimation.start("animate");
+  };
+
+  const onChangeHandler = (payload: string, type: ContactFormActionTypes) => {
+    dispatch({ type, payload });
+  };
 
   return (
-    <Styles.Form onSubmit={submitHandler}>
+    <Styles.Form onSubmit={onSubmit}>
       <Input
         type="text"
         placeholder="name"
         value={state.name}
+        variants={errorVariants}
+        animate={nameAnimation}
         onChange={(e) =>
-          dispatch({
-            type: ContactFormActionTypes.CHANGE_NAME,
-            payload: e.target.value,
-          })
+          onChangeHandler(e.target.value, ContactFormActionTypes.CHANGE_NAME)
         }
       />
       <Input
         type="text"
         placeholder="email"
         value={state.email}
+        variants={errorVariants}
+        animate={emailAnimation}
         onChange={(e) =>
-          dispatch({
-            type: ContactFormActionTypes.CHANGE_EMAIL,
-            payload: e.target.value,
-          })
+          onChangeHandler(e.target.value, ContactFormActionTypes.CHANGE_EMAIL)
         }
       />
       <Input
         type="text"
         placeholder="age"
+        variants={errorVariants}
+        animate={ageAnimation}
         value={state.age}
         onChange={(e) =>
-          dispatch({
-            type: ContactFormActionTypes.CHANGE_AGE,
-            payload: e.target.value,
-          })
+          onChangeHandler(e.target.value, ContactFormActionTypes.CHANGE_AGE)
         }
       />
       <Button text="submit" inverted />
