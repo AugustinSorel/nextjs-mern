@@ -9,6 +9,10 @@ function AddNewContactPage() {
         <title>new contact</title>
         <meta name="description" content="add a new contact" />
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
       </Head>
       <ContactForm mutationFunction={addNewContact} />
     </>
