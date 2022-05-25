@@ -1,11 +1,11 @@
+import Contact from "../../types/Contact";
 import {
   ContactFormAction,
   ContactFormActionTypes,
-  ContactFormState,
 } from "../../types/ContactFormTypes";
 
 export const contactFormReducer = (
-  state: ContactFormState,
+  state: Contact,
   action: ContactFormAction
 ) => {
   const { payload, type } = action;
