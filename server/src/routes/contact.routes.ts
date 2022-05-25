@@ -1,5 +1,8 @@
 import express from "express";
-import { addNewContact } from "../controllers/contact.controllers";
+import {
+  addNewContact,
+  getAllContacts,
+} from "../controllers/contact.controllers";
 import validateRessource from "../middlewares/validateRessource.middleware";
 import { addNewContactSchema } from "../schemas/contact.schema";
 
@@ -11,6 +14,6 @@ contactRouter.post(
   addNewContact
 );
 
-contactRouter.get("/all-contacts", addNewContact);
+contactRouter.get("/all-contacts", getAllContacts);
 
 export default contactRouter;

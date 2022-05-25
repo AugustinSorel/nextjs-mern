@@ -1,4 +1,5 @@
 import axios from "axios";
+import Contact from "../types/Contact";
 import { ContactFormState } from "../types/ContactFormTypes";
 
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URI || "http://localhost:5000/";
@@ -13,7 +14,7 @@ export const addNewContact = async (contact: ContactFormState) => {
   return newContact.data;
 };
 
-export const getAllContacts = async (): Promise<ContactFormState[]> => {
+export const getAllContacts = async (): Promise<Contact[]> => {
   const contacts = await contactApi.get("/all-contacts");
 
   return contacts.data;

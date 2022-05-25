@@ -4,7 +4,11 @@ import { QueryClient, dehydrate, useQuery } from "react-query";
 import { getAllContacts } from "../api/contactApi";
 
 const Home: NextPage = () => {
-  const { data } = useQuery("posts", getAllContacts);
+  const { data, isSuccess } = useQuery("contacts", getAllContacts);
+
+  if (!isSuccess) {
+    return <div>Something went wrong...</div>;
+  }
 
   return (
     <div>
@@ -14,13 +18,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {data &&
-        data.map((contact) => (
-          <div>
-            <h1>{contact.name}</h1>
-            <p>{contact.email}</p>
-          </div>
-        ))}
+      {data.map((contact) => (
+        <div key={contact._id}>
+          <h1>{contact.name}</h1>
+          <p>{contact.email}</p>
+        </div>
+      ))}
     </div>
   );
 };
@@ -28,7 +31,7 @@ const Home: NextPage = () => {
 export async function getStaticProps() {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery("posts", getAllContacts);
+  await queryClient.prefetchQuery("contacts", getAllContacts);
 
   return {
     props: {
