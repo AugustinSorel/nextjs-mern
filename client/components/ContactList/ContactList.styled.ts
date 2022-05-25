@@ -16,7 +16,10 @@ export const Anchor = styled.a`
   color: inherit;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  & > * {
+    flex: 1;
+  }
 `;
 
 const Text = css`
@@ -27,12 +30,15 @@ const Text = css`
 export const Name = styled.h4`
   ${Text}
   text-transform: capitalize;
+  text-align: left;
 `;
 
 export const Email = styled.h5`
   ${Text}
+  text-align: center;
 `;
 
 export const Age = styled.h5`
   ${Text}
+  text-align: right;
 `;
