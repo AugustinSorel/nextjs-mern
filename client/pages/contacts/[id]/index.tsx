@@ -33,27 +33,4 @@ const ContactPage = () => {
   );
 };
 
-export const getStaticPaths = async () => {
-  const res = await getAllContacts();
-
-  const paths = res.map((contact) => {
-    return { params: { id: String(contact._id) } };
-  });
-
-  return { paths, fallback: "blocking" };
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context.params?.id as string;
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(["contact", id], () => getContact(id));
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-};
-
 export default ContactPage;
