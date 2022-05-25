@@ -12,3 +12,10 @@ export const getAllContactsService = () => {
 export const getContactService = (id: string) => {
   return ContactModel.findById(id);
 };
+
+export const updateContactService = (
+  id: string,
+  updatedContact: AddNewContactSchema
+) => {
+  return ContactModel.findByIdAndUpdate(id, updatedContact, { new: true });
+};

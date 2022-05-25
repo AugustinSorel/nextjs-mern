@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { dehydrate, QueryClient, useQuery } from "react-query";
 import { getAllContacts, getContact } from "../../../api/contactApi";
+import ContactForm from "../../../components/ContactForm";
 
 const ContactPage = () => {
   const router = useRouter();
@@ -25,6 +26,7 @@ const ContactPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      {/* <ContactForm mutationFunction={()=>{}} /> */}
       <h3>{contact.name}</h3>
       <h3>{contact.email}</h3>
       <h3>{contact.age}</h3>
@@ -44,8 +46,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context.params?.id as string;
+export const getStaticProps = async ({
+  params,
+}: {
+  params: { id: string };
+}) => {
+  const id = params.id;
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(["contact", id], () => getContact(id));

@@ -3,9 +3,13 @@ import {
   addNewContact,
   getAllContacts,
   getContact,
+  updateContact,
 } from "../controllers/contact.controllers";
 import validateRessource from "../middlewares/validateRessource.middleware";
-import { addNewContactSchema } from "../schemas/contact.schema";
+import {
+  addNewContactSchema,
+  updateContactSchema,
+} from "../schemas/contact.schema";
 
 const contactRouter = express.Router();
 
@@ -17,5 +21,11 @@ contactRouter.post(
 
 contactRouter.get("/all-contacts", getAllContacts);
 contactRouter.get("/contact/:id", getContact);
+
+contactRouter.patch(
+  "/update-contact/:id",
+  validateRessource(updateContactSchema),
+  updateContact
+);
 
 export default contactRouter;
