@@ -1,4 +1,4 @@
-import { object, string, TypeOf } from "zod";
+import { object, string, TypeOf, number, union } from "zod";
 
 const name = string({
   required_error: "Name is required",
@@ -11,7 +11,14 @@ const age = string({
 })
   .min(0, "Age must be at least 0")
   .max(150, "Age must be at most 150")
-  .regex(/^[0-9]+$/, "Age must be a number");
+  .regex(/^[0-9]+$/, "Age must be a number")
+  .or(
+    number({
+      required_error: "Age is required",
+    })
+      .min(0, "Age must be at least 0")
+      .max(150, "Age must be at most 150")
+  );
 
 const email = string({
   required_error: "Email is required",

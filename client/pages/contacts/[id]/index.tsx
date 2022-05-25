@@ -3,7 +3,11 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
 import { dehydrate, QueryClient, useQuery } from "react-query";
-import { getAllContacts, getContact } from "../../../api/contactApi";
+import {
+  getAllContacts,
+  getContact,
+  updateContact,
+} from "../../../api/contactApi";
 import ContactForm from "../../../components/ContactForm";
 
 const ContactPage = () => {
@@ -26,10 +30,7 @@ const ContactPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <ContactForm mutationFunction={()=>{}} /> */}
-      <h3>{contact.name}</h3>
-      <h3>{contact.email}</h3>
-      <h3>{contact.age}</h3>
+      <ContactForm mutationFunction={updateContact} stateValues={contact} />
     </>
   );
 };

@@ -8,9 +8,3 @@ export interface ContactFormAction {
   type: ContactFormActionTypes;
   payload: string;
 }
-
-export interface ContactFormState {
-  name: string;
-  email: string;
-  age: string;
-}

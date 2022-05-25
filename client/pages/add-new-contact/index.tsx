@@ -1,6 +1,13 @@
 import Head from "next/head";
 import { addNewContact } from "../../api/contactApi";
 import ContactForm from "../../components/ContactForm";
+import Contact from "../../types/Contact";
+
+const defaultValues: Contact = {
+  name: "",
+  email: "",
+  age: "",
+};
 
 function AddNewContactPage() {
   return (
@@ -10,7 +17,10 @@ function AddNewContactPage() {
         <meta name="description" content="add a new contact" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ContactForm mutationFunction={addNewContact} />
+      <ContactForm
+        mutationFunction={addNewContact}
+        stateValues={defaultValues}
+      />
     </>
   );
 }

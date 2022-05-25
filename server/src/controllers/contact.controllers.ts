@@ -66,7 +66,11 @@ export const updateContact = async (
     const updatedContact = await updateContactService(req.params.id, req.body);
 
     res.status(200).json(updatedContact);
-  } catch (error) {
+  } catch (error: any) {
+    if (error.code === 11000) {
+      return next(ContactErrors.duplicateEmail());
+    }
+
     res.sendStatus(400);
   }
 };

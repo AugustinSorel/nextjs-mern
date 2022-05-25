@@ -24,9 +24,3 @@ export const contactFormReducer = (
       return state;
   }
 };
-
-export const defaultValues: ContactFormState = {
-  name: "",
-  email: "",
-  age: "",
-};

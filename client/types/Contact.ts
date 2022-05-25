@@ -1,7 +1,8 @@
-import { ContactFormState } from "./ContactFormTypes";
-
-type Contact = ContactFormState & {
-  _id: string;
+type Contact = {
+  _id?: string;
+  name: string;
+  email: string;
+  age: string;
 };
 
 export default Contact;

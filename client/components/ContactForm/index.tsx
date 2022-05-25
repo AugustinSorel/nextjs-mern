@@ -1,23 +1,22 @@
 import { useAnimation } from "framer-motion";
 import { useRouter } from "next/router";
 import { FormEvent, useReducer, useState } from "react";
-import { useMutation } from "react-query";
+import { useMutation, MutationFunction } from "react-query";
 import errorVariants from "../../framerMotion/errorVariants";
-import {
-  ContactFormActionTypes,
-  ContactFormState,
-} from "../../types/ContactFormTypes";
+import Contact from "../../types/Contact";
+import { ContactFormActionTypes } from "../../types/ContactFormTypes";
 import Button from "../Button";
 import Input from "../Input";
 import * as Styles from "./ContactForm.styled";
-import { contactFormReducer, defaultValues } from "./contactFormReducer";
+import { contactFormReducer } from "./contactFormReducer";
 
 type Props = {
-  mutationFunction: (contact: ContactFormState) => Promise<any>;
+  mutationFunction: MutationFunction<Contact, Contact>;
+  stateValues: Contact;
 };
 
-const ContactForm = ({ mutationFunction }: Props) => {
-  const [state, dispatch] = useReducer(contactFormReducer, defaultValues);
+const ContactForm = ({ mutationFunction, stateValues }: Props) => {
+  const [state, dispatch] = useReducer(contactFormReducer, stateValues);
   const [buttonText, setButtonText] = useState("");
   const nameAnimation = useAnimation();
   const emailAnimation = useAnimation();

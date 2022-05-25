@@ -1,5 +1,4 @@
 import { AnimatePresence } from "framer-motion";
-import React, { useState } from "react";
 import useNavigationMenuStore from "../../store/useNavigationMenuStore";
 import Button from "../Button";
 import MenuIcon from "../MenuIcon";
