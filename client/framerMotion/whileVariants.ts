@@ -11,3 +11,7 @@ export const scaleDown = {
 export const brightBackground = {
   backgroundColor: theme.colors.brightColor,
 };
+
+export const brightColor = {
+  color: theme.colors.brightColor,
+};

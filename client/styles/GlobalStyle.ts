@@ -41,6 +41,10 @@ const GlobalStyle = createGlobalStyle`
         min-height: 100vh;
     }
 
+    ::selection{
+        background-color: var(--color);
+        color: var(--background-color);
+    }
 `;
 
 export default GlobalStyle;
