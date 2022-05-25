@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { dehydrate, QueryClient } from "react-query";
 import styled from "styled-components";
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery("contacts", getAllContacts);
@@ -45,6 +45,6 @@ export async function getStaticProps() {
     },
     revalidate: 1,
   };
-}
+};
 
 export default Home;
