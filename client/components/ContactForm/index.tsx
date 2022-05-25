@@ -1,5 +1,6 @@
 import { useAnimation } from "framer-motion";
-import { FormEvent, useReducer } from "react";
+import { useRouter } from "next/router";
+import { FormEvent, useReducer, useState } from "react";
 import { useMutation } from "react-query";
 import errorVariants from "../../framerMotion/errorVariants";
 import {
@@ -17,14 +18,14 @@ type Props = {
 
 const ContactForm = ({ mutationFunction }: Props) => {
   const [state, dispatch] = useReducer(contactFormReducer, defaultValues);
+  const [buttonText, setButtonText] = useState("");
   const nameAnimation = useAnimation();
   const emailAnimation = useAnimation();
   const ageAnimation = useAnimation();
+  const router = useRouter();
 
   const errorHandler = (error: any) => {
-    console.log(error.response.data.message);
-    console.log(error.response.data.field);
-
+    setButtonText(error.response.data.message);
     if (error.response.data.field === "name") {
       nameAnimation.start("animate");
     }
@@ -38,8 +39,8 @@ const ContactForm = ({ mutationFunction }: Props) => {
     }
   };
 
-  const successHandler = (data: any) => {
-    console.log(data);
+  const successHandler = () => {
+    router.push("/");
   };
 
   const { mutate: contactFormMutate } = useMutation(mutationFunction, {
@@ -88,7 +89,7 @@ const ContactForm = ({ mutationFunction }: Props) => {
           onChangeHandler(e.target.value, ContactFormActionTypes.CHANGE_AGE)
         }
       />
-      <Button text="submit" inverted />
+      <Button text={buttonText || "submit"} inverted />
     </Styles.Form>
   );
 };

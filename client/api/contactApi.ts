@@ -10,7 +10,11 @@ const contactApi = axios.create({
 export const addNewContact = async (contact: ContactFormState) => {
   const newContact = await contactApi.post("/add-new-contact", contact);
 
-  console.log(newContact);
-
   return newContact.data;
+};
+
+export const getAllContacts = async (): Promise<ContactFormState[]> => {
+  const contacts = await contactApi.get("/all-contacts");
+
+  return contacts.data;
 };
