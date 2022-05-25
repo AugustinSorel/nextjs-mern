@@ -1,8 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import ContactErrors from "../errors/Contact.errors";
-import ContactModel from "../models/Contact.model";
 import { AddNewContactSchema } from "../schemas/contact.schema";
-import { addNewContactService } from "../services/contact.service";
+import {
+  addNewContactService,
+  getAllContactsService,
+} from "../services/contact.service";
 
 export const addNewContact = async (
   req: Request<{}, {}, AddNewContactSchema>,
@@ -18,6 +20,20 @@ export const addNewContact = async (
       return next(ContactErrors.duplicateEmail());
     }
 
+    res.sendStatus(400);
+  }
+};
+
+export const getAllContacts = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const contacts = await getAllContactsService();
+
+    res.status(200).json(contacts);
+  } catch (error) {
     res.sendStatus(400);
   }
 };

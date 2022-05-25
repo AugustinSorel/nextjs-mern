@@ -11,4 +11,6 @@ contactRouter.post(
   addNewContact
 );
 
+contactRouter.get("/all-contacts", addNewContact);
+
 export default contactRouter;
