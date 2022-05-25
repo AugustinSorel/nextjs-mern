@@ -7,7 +7,6 @@ import {
   scaleUp,
 } from "../../framerMotion/whileVariants";
 import Link from "next/link";
-import { AnimatePresence } from "framer-motion";
 import {
   listItemVariants,
   listVariants,
@@ -22,25 +21,23 @@ const ContactList = () => {
 
   return (
     <Styles.List variants={listVariants} initial="initial" animate="animate">
-      <AnimatePresence exitBeforeEnter>
-        {data.map((contact) => (
-          <Styles.ListItem
-            variants={listItemVariants}
-            key={contact._id}
-            whileHover={{ ...scaleUp, ...brightColor }}
-            whileFocus={{ ...scaleUp, ...brightColor }}
-            whileTap={{ ...scaleDown, ...brightColor }}
-          >
-            <Link href={`/contacts/${contact._id}`}>
-              <Styles.Anchor>
-                <Styles.Name>{contact.name}</Styles.Name>
-                <Styles.Email>{contact.email}</Styles.Email>
-                <Styles.Age>{contact.age}</Styles.Age>
-              </Styles.Anchor>
-            </Link>
-          </Styles.ListItem>
-        ))}
-      </AnimatePresence>
+      {data.map((contact) => (
+        <Styles.ListItem
+          variants={listItemVariants}
+          key={contact._id}
+          whileHover={{ ...scaleUp, ...brightColor }}
+          whileFocus={{ ...scaleUp, ...brightColor }}
+          whileTap={{ ...scaleDown, ...brightColor }}
+        >
+          <Link href={`/contacts/${contact._id}`}>
+            <Styles.Anchor>
+              <Styles.Name>{contact.name}</Styles.Name>
+              <Styles.Email>{contact.email}</Styles.Email>
+              <Styles.Age>{contact.age}</Styles.Age>
+            </Styles.Anchor>
+          </Link>
+        </Styles.ListItem>
+      ))}
     </Styles.List>
   );
 };

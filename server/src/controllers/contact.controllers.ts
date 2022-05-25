@@ -4,6 +4,7 @@ import { AddNewContactSchema } from "../schemas/contact.schema";
 import {
   addNewContactService,
   getAllContactsService,
+  getContactService,
 } from "../services/contact.service";
 
 export const addNewContact = async (
@@ -33,6 +34,20 @@ export const getAllContacts = async (
     const contacts = await getAllContactsService();
 
     res.status(200).json(contacts);
+  } catch (error) {
+    res.sendStatus(400);
+  }
+};
+
+export const getContact = async (
+  req: Request<{ id: string }, {}, {}>,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const contact = await getContactService(req.params.id);
+
+    res.status(200).json(contact);
   } catch (error) {
     res.sendStatus(400);
   }

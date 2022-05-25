@@ -19,3 +19,9 @@ export const getAllContacts = async (): Promise<Contact[]> => {
 
   return contacts.data;
 };
+
+export const getContact = async (id: string): Promise<Contact> => {
+  const contact = await contactApi.get(`/contact/${id}`);
+
+  return contact.data;
+};

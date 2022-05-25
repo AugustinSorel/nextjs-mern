@@ -2,6 +2,7 @@ import express from "express";
 import {
   addNewContact,
   getAllContacts,
+  getContact,
 } from "../controllers/contact.controllers";
 import validateRessource from "../middlewares/validateRessource.middleware";
 import { addNewContactSchema } from "../schemas/contact.schema";
@@ -15,5 +16,6 @@ contactRouter.post(
 );
 
 contactRouter.get("/all-contacts", getAllContacts);
+contactRouter.get("/contact/:id", getContact);
 
 export default contactRouter;

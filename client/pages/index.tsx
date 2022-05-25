@@ -11,6 +11,10 @@ const Title = styled.h3`
   margin: 0 auto;
   padding: var(--gap) calc(var(--gap) * 3);
   border-bottom: var(--border-height) solid var(--color);
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
 `;
 
 const Home: NextPage = () => {

@@ -8,3 +8,7 @@ export const addNewContactService = (newContact: AddNewContactSchema) => {
 export const getAllContactsService = () => {
   return ContactModel.find();
 };
+
+export const getContactService = (id: string) => {
+  return ContactModel.findById(id);
+};
