@@ -33,7 +33,6 @@ const Home: NextPage = () => {
     </>
   );
 };
-// trdt
 
 export async function getStaticProps() {
   const queryClient = new QueryClient();
@@ -44,7 +43,7 @@ export async function getStaticProps() {
     props: {
       dehydratedState: dehydrate(queryClient),
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 }
 
