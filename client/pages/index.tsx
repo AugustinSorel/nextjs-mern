@@ -33,6 +33,7 @@ const Home: NextPage = () => {
     </>
   );
 };
+// trdt
 
 export async function getStaticProps() {
   const queryClient = new QueryClient();
