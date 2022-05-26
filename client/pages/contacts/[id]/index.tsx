@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
@@ -8,7 +8,9 @@ import {
   getContact,
   updateContact,
 } from "../../../api/contactApi";
+import Button from "../../../components/Button";
 import ContactForm from "../../../components/ContactForm";
+import * as Styles from "./ContactPage.styled";
 
 const ContactPage = () => {
   const router = useRouter();
@@ -30,7 +32,10 @@ const ContactPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ContactForm mutationFunction={updateContact} stateValues={contact} />
+      <Styles.Main>
+        <ContactForm mutationFunction={updateContact} stateValues={contact} />
+        <Button text="delete" inverted />
+      </Styles.Main>
     </>
   );
 };

@@ -14,7 +14,7 @@ app.use(express.json());
 app.use("/api", router);
 app.use(apiErrors);
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server started on port ${PORT}`);
-  connectToMongoDb();
+  await connectToMongoDb();
 });

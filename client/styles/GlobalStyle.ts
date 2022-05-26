@@ -35,15 +35,31 @@ const GlobalStyle = createGlobalStyle`
         font-weight: var(--font-weight-regular);
     }
 
+    html, body, #__next{
+        height: 100%;
+    }
+
     #__next{
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
+        max-height: 100vh;
     }
 
     ::selection{
         background-color: var(--color);
         color: var(--background-color);
+    }
+
+    ::-webkit-scrollbar{
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track{
+        background-color: var(--bright-background-color);
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: var(--color);
     }
 `;
 

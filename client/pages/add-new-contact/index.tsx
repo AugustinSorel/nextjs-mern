@@ -2,6 +2,7 @@ import Head from "next/head";
 import { addNewContact } from "../../api/contactApi";
 import ContactForm from "../../components/ContactForm";
 import Contact from "../../types/Contact";
+import * as Styles from "./AddNewContactPage.styled";
 
 const defaultValues: Contact = {
   name: "",
@@ -17,10 +18,13 @@ function AddNewContactPage() {
         <meta name="description" content="add a new contact" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ContactForm
-        mutationFunction={addNewContact}
-        stateValues={defaultValues}
-      />
+
+      <Styles.Main>
+        <ContactForm
+          mutationFunction={addNewContact}
+          stateValues={defaultValues}
+        />
+      </Styles.Main>
     </>
   );
 }
