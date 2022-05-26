@@ -8,9 +8,8 @@ import {
   getContact,
   updateContact,
 } from "../../../api/contactApi";
-import Button from "../../../components/Button";
 import ContactForm from "../../../components/ContactForm";
-import * as Styles from "./ContactPage.styled";
+import * as Styles from "../../../styles/ContactPage.styled";
 
 const ContactPage = () => {
   const router = useRouter();
