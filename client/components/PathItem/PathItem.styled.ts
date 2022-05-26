@@ -4,7 +4,7 @@ import devices from "../../styles/devices";
 
 export const ListItem = styled.li`
   list-style: none;
-  padding: var(--gap);
+  padding: 0.5rem var(--gap);
   position: relative;
 `;
 
@@ -34,19 +34,6 @@ export const Backdrop = styled(motion.div)`
   background-color: var(--bright-background-color);
   z-index: -1;
   border-radius: var(--border-radius);
-
-  @media ${devices.mobile} {
-    display: none;
-  }
-`;
-
-export const Underline = styled(motion.div)`
-  position: absolute;
-  left: 0;
-  bottom: calc(-1 * var(--border-height));
-  height: var(--border-height);
-  width: 100%;
-  background-color: var(--bright-color);
 
   @media ${devices.mobile} {
     display: none;

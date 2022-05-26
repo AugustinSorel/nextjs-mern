@@ -36,7 +36,6 @@ const PathItem = ({ path: { href, label } }: Props) => {
       </Styles.Text>
 
       {isPathItemHovered && <Styles.Backdrop layoutId="backdrop" />}
-      {isPathItemSelected && <Styles.Underline layoutId="underline" />}
     </Styles.ListItem>
   );
 };

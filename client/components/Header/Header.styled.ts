@@ -3,7 +3,7 @@ import styled from "styled-components";
 import devices from "../../styles/devices";
 
 export const Header = styled.header`
-  padding: 0 var(--gap);
+  padding: 0.5rem var(--gap);
   border-bottom: var(--border-height) solid var(--color);
 
   display: flex;

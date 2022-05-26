@@ -34,7 +34,6 @@ const ContactPage = () => {
 
       <Styles.Main>
         <ContactForm mutationFunction={updateContact} stateValues={contact} />
-        <Button text="delete" inverted />
       </Styles.Main>
     </>
   );
