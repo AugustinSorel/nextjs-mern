@@ -2,7 +2,7 @@ import Head from "next/head";
 import { addNewContact } from "../../api/contactApi";
 import ContactForm from "../../components/ContactForm";
 import Contact from "../../types/Contact";
-import * as Styles from "./AddNewContactPage.styled";
+import * as Styles from "../../styles/AddNewContactPage.styled";
 
 const defaultValues: Contact = {
   name: "",
