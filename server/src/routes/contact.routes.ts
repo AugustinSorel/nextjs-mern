@@ -1,6 +1,7 @@
 import express from "express";
 import {
   addNewContact,
+  deleteContact,
   getAllContacts,
   getContact,
   updateContact,
@@ -27,5 +28,7 @@ contactRouter.patch(
   validateRessource(updateContactSchema),
   updateContact
 );
+
+contactRouter.delete("/delete-contact/:id", deleteContact);
 
 export default contactRouter;

@@ -35,3 +35,9 @@ export const updateContact = async (
 
   return res.data;
 };
+
+export const deleteContact = async (id: string) => {
+  const contact = await contactApi.delete(`/delete-contact/${id}`);
+
+  return contact.data;
+};

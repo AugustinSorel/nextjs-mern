@@ -1,8 +1,9 @@
 import { Variants } from "framer-motion";
+import theme from "../styles/theme";
 
 const errorVariants: Variants = {
   animate: {
-    color: ["#b3b3b3", "#ff0000", "#b3b3b3"],
+    color: [theme.colors.color, theme.colors.error, theme.colors.color],
     x: [0, -30, 30, 0],
   },
 };

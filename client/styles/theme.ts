@@ -6,6 +6,7 @@ const theme: DefaultTheme = {
     brightBackground: "#303030",
     color: "#b3b3b3",
     brightColor: "#ffffff",
+    error: "#ff0000",
   },
 
   fontSizes: {

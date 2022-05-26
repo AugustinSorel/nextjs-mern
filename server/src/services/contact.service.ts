@@ -19,3 +19,7 @@ export const updateContactService = (
 ) => {
   return ContactModel.findByIdAndUpdate(id, updatedContact, { new: true });
 };
+
+export const deleteContactService = (id: string) => {
+  return ContactModel.findByIdAndDelete(id);
+};

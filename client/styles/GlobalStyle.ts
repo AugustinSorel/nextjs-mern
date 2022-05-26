@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
           theme.colors.brightBackground};
         --color: ${({ theme }) => theme.colors.color};
         --bright-color: ${({ theme }) => theme.colors.brightColor};
+        --error-color: ${({ theme }) => theme.colors.error};
 
         --font-size-small: ${({ theme }) => theme.fontSizes.small};
         --font-size-medium: ${({ theme }) => theme.fontSizes.medium};

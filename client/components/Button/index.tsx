@@ -1,5 +1,6 @@
 import {
   brightBackground,
+  brightColor,
   scaleDown,
   scaleUp,
 } from "../../framerMotion/whileVariants";
@@ -11,9 +12,18 @@ type Props = {
   onClick?: () => void;
   text?: string;
   inverted?: boolean;
+  color?: string;
 };
 
 const Button = ({ children, text, inverted, ...rest }: Props) => {
+  const getBright = () => {
+    if (inverted) {
+      return brightBackground;
+    }
+
+    return brightColor;
+  };
+
   if (children) {
     return (
       <Styles.Button
@@ -28,9 +38,9 @@ const Button = ({ children, text, inverted, ...rest }: Props) => {
 
   return (
     <Styles.Button
-      whileHover={{ ...brightBackground, ...scaleUp }}
+      whileHover={{ ...getBright(), ...scaleUp }}
       whileTap={{ ...scaleDown }}
-      whileFocus={{ ...brightBackground, ...scaleUp }}
+      whileFocus={{ ...getBright(), ...scaleUp }}
       $inverted={inverted}
       {...rest}
     >

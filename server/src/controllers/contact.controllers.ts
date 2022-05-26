@@ -6,6 +6,7 @@ import {
 } from "../schemas/contact.schema";
 import {
   addNewContactService,
+  deleteContactService,
   getAllContactsService,
   getContactService,
   updateContactService,
@@ -71,6 +72,20 @@ export const updateContact = async (
       return next(ContactErrors.duplicateEmail());
     }
 
+    res.sendStatus(400);
+  }
+};
+
+export const deleteContact = async (
+  req: Request<{ id: string }, {}, {}>,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    await deleteContactService(req.params.id);
+
+    res.sendStatus(204);
+  } catch (error) {
     res.sendStatus(400);
   }
 };
