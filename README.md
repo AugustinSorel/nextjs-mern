@@ -1,7 +1,7 @@
 # nextjs-mern
 
 ## Links
-* [Youtube]() - Testing video.
+* [Youtube](https://youtu.be/ORAuJs51bkU) - Testing video.
 * [Live Testing](https://nextjs-mern-qe20cmzhl-augustinsorel.vercel.app/) - Live Testing Website.
 
 ## Made with:
